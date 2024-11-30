@@ -24,9 +24,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # Step 3: 安装 Gradle Wrapper
-      - name: Set up Gradle
-        uses: gradle/wrapper-validation-action@v1
+      # Step 3: 授予 gradlew 文件执行权限
+      - name: Give execute permission to gradlew
+        run: chmod +x ./gradlew  # 赋予执行权限
 
       # Step 4: 构建 mod 文件
       - name: Build with Gradle
@@ -38,4 +38,3 @@ jobs:
         with:
           name: MeowAutoResourcePack
           path: build/libs/*.jar   # 上传构建的 .jar 文件
-
