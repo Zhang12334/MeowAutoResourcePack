@@ -18,14 +18,17 @@
     </properties>
 
     <dependencies>
+        <!-- Fabric API 依赖 -->
         <dependency>
             <groupId>net.fabricmc.fabric-api</groupId>
             <artifactId>fabric-api</artifactId>
             <version>${fabric.api.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Fabric Loader 依赖 -->
         <dependency>
-            <groupId>net.fabricmc:fabric-loader</groupId>
+            <groupId>net.fabricmc</groupId> <!-- 修正groupId -->
             <artifactId>fabric-loader</artifactId>
             <version>0.14.7</version>
             <scope>provided</scope>
@@ -34,6 +37,7 @@
 
     <build>
         <plugins>
+            <!-- Fabric Loom 插件配置 -->
             <plugin>
                 <groupId>io.fabricmc</groupId>
                 <artifactId>fabric-loom</artifactId>
