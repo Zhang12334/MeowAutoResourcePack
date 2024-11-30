@@ -1,25 +1,35 @@
 {
     "schemaVersion": 1,
     "id": "meowautoresourcepack",
-    "version": "1.0.0",
+    "version": "${version}",
     "name": "MeowAutoResourcePack",
-    "description": "别问我, 装就完了！——在服务器要求使用自定义材质包时自动下载并安装",
-    "authors": ["Zhang1233"],
+    "description": "在服务器要求使用自定义材质包时自动下载并安装",
+    "authors": [
+      "Zhang1233"
+    ],
     "contact": {
       "homepage": "https://github.com/Zhang12334/MeowAutoResourcePack",
       "sources": "https://github.com/Zhang12334/MeowAutoResourcePack"
     },
-    "license": "MIT",
+    "license": "ZHCNOSL",
     "icon": "assets/meowautoresourcepack/icon.png",
-    "environment": "client",
+    "environment": "*",
     "entrypoints": {
       "main": [
-        "com.meow.meowautoresourcepack.MeowAutoResourcePack"
+        "com.meow.MeowAutoResourcePack"
       ]
     },
+    "mixins": [
+      "meowautoresourcepack.mixins.json"
+    ],
     "depends": {
-      "fabric-api": "*",
-      "minecraft": "1.20.1"
+      "fabricloader": ">=0.16.9",
+      "minecraft": "~1.20.1",
+      "java": ">=17",
+      "fabric-api": "*"
+    },
+    "suggests": {
+      "another-mod": "*"
     }
   }
   
