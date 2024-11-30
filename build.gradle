@@ -13,6 +13,8 @@ base {
 repositories {
     mavenCentral()
     maven { url 'https://maven.fabricmc.net/' }
+    // Add libraries.minecraft.net for Mixin dependencies
+    maven { url "https://libraries.minecraft.net" }
 }
 
 dependencies {
@@ -23,9 +25,9 @@ dependencies {
     
     // Fabric API依赖
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    
-    // Mixin依赖
-    modImplementation "org.spongepowered:mixin:${project.mixin_version}"
+
+    // Mixin library
+    modImplementation "org.spongepowered:mixin:0.8.5"
 }
 
 loom {
