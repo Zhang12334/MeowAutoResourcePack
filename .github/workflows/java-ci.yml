@@ -1,41 +1,46 @@
-name: Build Mod
+name: Build Mod with Gradle
 
 on:
   push:
     branches:
-      - main        # 监听 main 分支的推送，可以根据需要调整分支
+      - main
   pull_request:
     branches:
-      - main        # 监听对 main 分支的 pull request
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 环境构建
+    runs-on: ubuntu-latest
 
     steps:
-      # Step 1: 检出代码
+      # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: 设置 Java JDK
-      - name: Set up JDK 17
+      # Step 2: Set up JDK 17 (using Temurin)
+      - name: Set up JDK 17 (Temurin)
         uses: actions/setup-java@v2
         with:
-          distribution: 'temurin'
           java-version: '17'
+          distribution: 'temurin'  # 使用 Temurin 版本的 JDK
 
-      # Step 3: 安装 Gradle Wrapper
-      - name: Set up Gradle
-        uses: gradle/wrapper-validation-action@v1
+      # Step 3: Install Gradle (if needed)
+      - name: Install Gradle
+        run: |
+          sudo apt update
+          sudo apt install -y gradle
 
-      # Step 4: 构建 mod 文件
+      # Step 4: Generate Gradle Wrapper
+      - name: Generate Gradle Wrapper
+        run: gradle wrapper
+
+      # Step 5: Build with Gradle
       - name: Build with Gradle
-        run: ./gradlew build  # 使用 Gradle Wrapper 来构建
+        run: ./gradlew build
 
-      # Step 5: 上传构建结果
+      # Step 6: Upload build artifacts
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: MeowAutoResourcePack
-          path: build/libs/*.jar   # 上传构建的 .jar 文件
-
+          path: build/libs/*.jar
