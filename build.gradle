@@ -2,20 +2,21 @@ plugins {
     // 应用 Java 插件
     id 'java'
     // 应用 Fabric Loom 插件，适用于 Fabric 构建
-    id 'fabric-loom' version '0.11.0'  // 使用合适的 Fabric Loom 版本
+    id 'fabric-loom' version '0.13.20'  // 使用合适的 Fabric Loom 版本
 }
 
 group = 'com.meow'  // 设置你的项目组 ID
 version = '1.0.0'  // 设置你的项目版本
 
 // 定义 JAR 文件的目标版本
-sourceCompatibility = '1.8'  // 使用 Java 8
-targetCompatibility = '1.8'  // 使用 Java 8
+sourceCompatibility = '17'  // 使用 Java 17
+targetCompatibility = '17'  // 使用 Java 17
 
 // Maven 仓库配置
 repositories {
     mavenCentral()  // 默认 Maven 仓库
     maven { url 'https://maven.fabricmc.net/' }  // 添加 Fabric 官方 Maven 仓库
+    maven { url 'https://libraries.minecraft.net/' }  // 添加 MC 官方 Maven 仓库
 }
 
 // 项目的依赖项
@@ -43,4 +44,3 @@ task remapJar(type: Jar) {
 test {
     useJUnitPlatform()  // 启用 JUnit Platform
 }
-
