@@ -17,6 +17,14 @@
         <yarn.mappings>1.20.1+build.3</yarn.mappings>
     </properties>
 
+    <repositories>
+        <!-- 添加 Fabric 官方 Maven 仓库 -->
+        <repository>
+            <id>fabricmc</id>
+            <url>https://maven.fabricmc.net/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- Fabric API 依赖 -->
         <dependency>
@@ -28,7 +36,7 @@
 
         <!-- Fabric Loader 依赖 -->
         <dependency>
-            <groupId>net.fabricmc</groupId> <!-- 修正groupId -->
+            <groupId>net.fabricmc</groupId>
             <artifactId>fabric-loader</artifactId>
             <version>0.14.7</version>
             <scope>provided</scope>
