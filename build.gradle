@@ -1,0 +1,46 @@
+plugins {
+    // 应用 Java 插件
+    id 'java'
+    // 应用 Fabric Loom 插件，适用于 Fabric 构建
+    id 'fabric-loom' version '0.11.0'  // 使用合适的 Fabric Loom 版本
+}
+
+group = 'com.meow'  // 设置你的项目组 ID
+version = '1.0.0'  // 设置你的项目版本
+
+// 定义 JAR 文件的目标版本
+sourceCompatibility = '1.8'  // 使用 Java 8
+targetCompatibility = '1.8'  // 使用 Java 8
+
+// Maven 仓库配置
+repositories {
+    mavenCentral()  // 默认 Maven 仓库
+    maven { url 'https://maven.fabricmc.net/' }  // 添加 Fabric 官方 Maven 仓库
+}
+
+// 项目的依赖项
+dependencies {
+    // Fabric API 依赖
+    implementation 'net.fabricmc:fabric-api:0.60.0+1.20'  // Fabric API
+
+    // 测试库依赖
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'  // 编译时使用 UTF-8 编码
+}
+
+// 用于构建 remap JAR 文件的任务
+task remapJar(type: Jar) {
+    dependsOn build  // 依赖于构建任务
+    archiveFileName = "${archivesBaseName}-${version}-remapped.jar"  // 输出文件名
+    from sourceSets.main.output  // 指定要打包的文件
+}
+
+// 配置测试任务
+test {
+    useJUnitPlatform()  // 启用 JUnit Platform
+}
+
