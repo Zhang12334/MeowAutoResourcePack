@@ -16,7 +16,7 @@
     "environment": "*",
     "entrypoints": {
       "main": [
-        "com.meow.MeowAutoResourcePack"
+        "com.meow.MeowAutoResourcePackClient"
       ]
     },
     "mixins": [

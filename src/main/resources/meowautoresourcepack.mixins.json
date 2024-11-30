@@ -4,6 +4,12 @@
 	"mixins": [
 	  "ResourcePackAutoAcceptMixin"
 	],
-	"client": []
+	"client": [],
+	"targets": [
+	  {
+		"target": "net.minecraft.client.resource.ResourcePackManager",
+		"selector": "CLIENT"
+	  }
+	]
   }
   
